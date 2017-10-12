@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.jxlg.app.entity">
+    <class name="Student" table="TB_STUDENT">
+        <id name="sid" column="SID" length="32">
+            <generator class="uuid"/>
+        </id>
+        <property name="name" column="NAME"/>
+        <set name="teachers" table="TB_STU_TEA" cascade="all" inverse="true">
+            <key column="SID"></key>
+            <many-to-many class="Teacher" column="TID"/>
+        </set>
+    </class>
+    <class name="Teacher" table="TB_TEACHER">
+        <id name="tid" column="TID" length="32">
+            <generator class="uuid"/>
+        </id>
+        <property name="name" column="NAME"/>
+        <set name="students" table="TB_STU_TEA" cascade="all" >
+            <key column="TID"></key>
+            <many-to-many class="Student" column="SID" />
+        </set>
+    </class>
+</hibernate-mapping>

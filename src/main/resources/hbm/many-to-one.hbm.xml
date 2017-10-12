@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.jxlg.app.entity">
+    <class name="User" table="TB_USER">
+        <id name="uid" column="UID">
+            <generator class="uuid"/>
+        </id>
+        <property name="name" column="NAME"/>
+
+        <property name="birthday" column="BIRTHDAY" type="timestamp"/>
+    </class>
+
+    <class name="Address" table="TB_ADDRESS">
+        <id name="aid" column="AID">
+            <generator class="uuid"/>
+        </id>
+        <property name="address" column="ADDRESS"/>
+        <many-to-one name="user" column="UID" class="User" cascade="all"/>
+    </class>
+</hibernate-mapping>

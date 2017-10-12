@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.jxlg.app.entity">
+    <class name="People" table="TB_People">
+        <id name="pid" column="PID">
+            <generator class="uuid"/>
+        </id>
+        <property name="name" column="NAME"/>
+        <set name="animals"  table="TB_ANIMAL" cascade="all" inverse="true">
+            <key column="PID"></key>
+            <one-to-many class="Animal"/>
+        </set>
+
+    </class>
+
+    <class name="Animal" table="TB_ANIMAL">
+        <id name="aid" column="AID">
+            <generator class="uuid"/>
+        </id>
+        <property name="name" column="NAME"/>
+        <many-to-one name="people" class="People" cascade="save-update" column="PID" />
+    </class>
+</hibernate-mapping>
