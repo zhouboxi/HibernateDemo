@@ -6,7 +6,7 @@
     <session-factory>
         <!--连接数据库信息-->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/hibernate?
+        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/hibernate2?
             useUnicode=true&amp;characterEncoding=UTF-8
         </property>
         <property name="connection.username">root</property>
@@ -21,6 +21,9 @@
         <property name="format_sql">true</property>
 
         <!-- 以文件路径的方式加载映射文件 -->
-
+        <mapping resource="hbm/many-to-one.hbm.xml"/>
+        <mapping resource="hbm/one-to-manyone.hbm.xml"/>
+        <mapping resource="hbm/one-to-manydouble.hbm.xml"/>
+        <mapping resource="hbm/many-to-many.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
